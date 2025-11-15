@@ -1,0 +1,94 @@
+# Конфигурация модуля распознавания речи
+version: "1.0.0"
+
+model:
+  # Настройки модели Whisper
+  model_size: "base"  # tiny, base, small, medium, large
+  device: "auto"      # auto, cuda, cpu
+  language: "auto"    # auto, ru, en, etc.
+  
+  # Настройки обработки
+  beam_size: 5
+  best_of: 5
+  patience: 1.0
+  temperature: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+  compression_ratio_threshold: 2.4
+  logprob_threshold: -1.0
+  no_speech_threshold: 0.6
+
+audio_processing:
+  # Настройки препроцессинга
+  target_sample_rate: 16000
+  chunk_duration: 30.0
+  normalize_audio: true
+  remove_silence: true
+  noise_reduction: true
+  apply_filters: true
+  
+  # Параметры фильтров
+  bandpass_lowcut: 300
+  bandpass_highcut: 8000
+  noise_reduction_db: 10.0
+  silence_threshold: 0.01
+  min_silence_duration: 0.1
+
+training:
+  # Настройки обучения
+  fine_tune_enabled: true
+  max_training_epochs: 10
+  learning_rate: 1.0e-5
+  batch_size: 8
+  validation_split: 0.2
+  
+  # Акценты для обучения
+  supported_accents:
+    - "russian_standard"
+    - "russian_southern"
+    - "russian_ural"
+    - "english_standard"
+    - "english_american"
+    - "english_british"
+
+vocabulary:
+  # Настройки словаря
+  main_vocab_file: "vocabulary/main_vocab.dat"
+  custom_words_file: "vocabulary/custom_words/user_added.txt"
+  max_custom_words: 1000
+  
+  # Акценты
+  accents_dir: "vocabulary/accents"
+  supported_languages:
+    - "russian"
+    - "english"
+
+performance:
+  # Настройки производительности
+  enable_caching: true
+  cache_size: 1000
+  max_audio_length: 600  # секунд
+  parallel_processing: false
+  gpu_memory_limit: "4GB"
+
+logging:
+  # Настройки логирования
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/speech_recognizer.log"
+  max_file_size: "10MB"
+  backup_count: 5
+
+api:
+  # Настройки API интерфейса
+  host: "localhost"
+  port: 8001
+  max_workers: 4
+  timeout: 30
+  max_file_size: "100MB"
+  
+  # Форматы поддерживаемых файлов
+  supported_formats:
+    - "wav"
+    - "mp3"
+    - "flac"
+    - "ogg"
+    - "m4a"

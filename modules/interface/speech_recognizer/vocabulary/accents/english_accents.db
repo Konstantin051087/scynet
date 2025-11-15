@@ -1,0 +1,18 @@
+{
+  "english_american": {
+    "characteristics": {
+      "rhotic": true,
+      "vowel_shifts": true,
+      "speech_rate": "medium"
+    },
+    "features": ["r-colored", "flat_a"]
+  },
+  "english_british": {
+    "characteristics": {
+      "rhotic": false,
+      "vowel_shifts": false,
+      "speech_rate": "fast"
+    },
+    "features": ["non-rhotic", "long_a"]
+  }
+}

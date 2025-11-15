@@ -12,6 +12,10 @@ requests
 python-dotenv
 pytest
 pytest-asyncio
+pytest-asyncio
+pytest-cov
+pytest-tornasync
+pytest-trio
 httpx
 aiofiles
 jinja2
@@ -24,7 +28,10 @@ numpy
 scikit-learn
 psutil
 anyio
-pytest-asyncio
-pytest-tornasync
-pytest-trio
-pytest-cov
+whisper-openai
+librosa
+scipy
+aiohttp
+web.py
+PyYAML
+soundfile

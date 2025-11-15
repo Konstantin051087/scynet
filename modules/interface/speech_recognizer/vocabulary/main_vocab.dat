@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "language": "multilingual",
+  "words": {
+    "привет": {"pronunciation": "privet", "frequency": 100},
+    "здравствуйте": {"pronunciation": "zdrastvuyte", "frequency": 95},
+    "спасибо": {"pronunciation": "spasibo", "frequency": 90},
+    "пожалуйста": {"pronunciation": "pozhaluysta", "frequency": 85},
+    "hello": {"pronunciation": "helo", "frequency": 100},
+    "thank": {"pronunciation": "thank", "frequency": 95},
+    "you": {"pronunciation": "yu", "frequency": 100},
+    "please": {"pronunciation": "pliz", "frequency": 90}
+  },
+  "phrases": {
+    "как дела": "kak dela",
+    "что нового": "chto novovo",
+    "how are you": "hau ar yu",
+    "what's up": "wats ap"
+  }
+}

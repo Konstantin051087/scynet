@@ -1,0 +1,28 @@
+{
+  "russian_standard": {
+    "characteristics": {
+      "vowel_reduction": "moderate",
+      "consonant_clarity": "high",
+      "speech_rate": "medium"
+    },
+    "regional_variants": {
+      "moscow": {
+        "аканье": true,
+        "оканье": false
+      },
+      "petersburg": {
+        "аканье": true,
+        "оканье": false,
+        "consonant_softening": "strong"
+      }
+    }
+  },
+  "russian_southern": {
+    "characteristics": {
+      "vowel_reduction": "low",
+      "consonant_clarity": "medium",
+      "speech_rate": "slow"
+    },
+    "features": ["г-фрикативный", "аканье-сильное"]
+  }
+}

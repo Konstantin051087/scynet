@@ -1,0 +1,16 @@
+{
+    "name": "Мужской нейтральный",
+    "gender": "male",
+    "age_group": "adult",
+    "pitch": 0.8,
+    "timbre": 1.0,
+    "resonance": 0.9,
+    "breathiness": 0.05,
+    "brightness": 0.4,
+    "stability": 0.95,
+    "smoothness": 0.85,
+    "description": "Стандартный мужской голос с нейтральной эмоциональной окраской",
+    "language_support": ["ru", "en"],
+    "version": "1.0",
+    "created": "2024-01-01"
+}

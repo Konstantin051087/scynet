@@ -1,0 +1,16 @@
+{
+    "name": "Грустный голос",
+    "gender": "neutral",
+    "age_group": "adult",
+    "pitch": 0.7,
+    "timbre": 0.8,
+    "resonance": 0.7,
+    "breathiness": 0.15,
+    "brightness": 0.3,
+    "stability": 0.9,
+    "smoothness": 0.95,
+    "description": "Тихий и меланхоличный голос с пониженной интонацией",
+    "language_support": ["ru", "en"],
+    "version": "1.0",
+    "created": "2024-01-01"
+}

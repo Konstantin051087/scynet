@@ -1,0 +1,12 @@
+{
+  "categories": [
+    {"id": 1, "name": "person", "description": "Human person"},
+    {"id": 2, "name": "car", "description": "Automobile vehicle"},
+    {"id": 3, "name": "tree", "description": "Tree or plant"},
+    {"id": 4, "name": "building", "description": "Building or structure"},
+    {"id": 5, "name": "animal", "description": "Animal"},
+    {"id": 6, "name": "food", "description": "Food item"},
+    {"id": 7, "name": "furniture", "description": "Furniture item"},
+    {"id": 8, "name": "electronic", "description": "Electronic device"}
+  ]
+}

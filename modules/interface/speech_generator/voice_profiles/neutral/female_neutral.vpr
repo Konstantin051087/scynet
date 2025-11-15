@@ -1,0 +1,16 @@
+{
+    "name": "Женский нейтральный",
+    "gender": "female",
+    "age_group": "adult",
+    "pitch": 1.2,
+    "timbre": 1.1,
+    "resonance": 1.0,
+    "breathiness": 0.08,
+    "brightness": 0.6,
+    "stability": 0.92,
+    "smoothness": 0.9,
+    "description": "Стандартный женский голос с нейтральной эмоциональной окраской",
+    "language_support": ["ru", "en"],
+    "version": "1.0",
+    "created": "2024-01-01"
+}

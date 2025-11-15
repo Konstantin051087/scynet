@@ -1,0 +1,41 @@
+# Конфигурация модуля генерации речи
+
+# Основные настройки
+engine_type: "pyttsx3"  # pyttsx3, gtts
+language: "ru"
+speech_rate: 200
+volume: 1.0
+
+# Настройки эмоциональной модуляции
+emotion:
+  base_modulation_strength: 0.8
+  enable_auto_detection: true
+
+# Настройки голоса
+voice:
+  voice_profiles_dir: "voice_profiles"
+  base_pitch: 1.0
+  base_timbre: 1.0
+  resonance: 1.0
+  breathiness: 0.1
+  brightness: 0.5
+
+# Настройки просодии
+prosody:
+  base_speed: 1.0
+  pause_duration: 0.3
+  emphasis_strength: 1.2
+
+# Настройки аудио обработки
+audio:
+  normalization: true
+  noise_reduction: true
+  compression: true
+  equalization: true
+  reverb: false
+
+# Настройки производительности
+performance:
+  enable_caching: true
+  cache_size: 100
+  preload_voices: true

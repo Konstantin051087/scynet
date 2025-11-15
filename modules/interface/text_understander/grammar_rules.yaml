@@ -1,0 +1,31 @@
+languages:
+  ru:
+    noun_cases:
+      nominative: ["кто", "что"]
+      genitive: ["кого", "чего"]
+      dative: ["кому", "чему"]
+      accusative: ["кого", "что"]
+      instrumental: ["кем", "чем"]
+      prepositional: ["о ком", "о чем"]
+    verb_aspect:
+      perfective: ["сделать", "написать", "прочитать"]
+      imperfective: ["делать", "писать", "читать"]
+    word_order: "SVO"
+    
+  en:
+    tenses:
+      present: ["do", "does", "am", "is", "are"]
+      past: ["did", "was", "were"]
+      future: ["will", "shall"]
+    articles:
+      definite: ["the"]
+      indefinite: ["a", "an"]
+    word_order: "SVO"
+
+common_rules:
+  agreement:
+    subject_verb: true
+    noun_adjective: true
+  punctuation:
+    sentence_end: [".", "!", "?"]
+    pause: [",", ";", ":"]
