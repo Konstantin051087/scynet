@@ -1,0 +1,2 @@
+# scynet
+AI model
