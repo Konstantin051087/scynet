@@ -1,0 +1,52 @@
+// planning/task_planner/plan_library/work.plans
+{
+  "domain": "work",
+  "templates": [
+    {
+      "name": "Выполнение проекта",
+      "keywords": ["проект", "работа", "задача", "дедлайн", "отчет"],
+      "steps": [
+        {
+          "action": "Анализ требований",
+          "parameters": {"requirements": [], "stakeholders": []},
+          "duration": 120,
+          "dependencies": [],
+          "resources": ["документация", "менеджер проекта"],
+          "priority": 1
+        },
+        {
+          "action": "Планирование работ",
+          "parameters": {"milestones": [], "resources": []},
+          "duration": 60,
+          "dependencies": ["Анализ требований"],
+          "resources": ["планировочные инструменты"],
+          "priority": 2
+        },
+        {
+          "action": "Выполнение основных задач",
+          "parameters": {"tasks": [], "deadlines": []},
+          "duration": 480,
+          "dependencies": ["Планирование работ"],
+          "resources": ["рабочее оборудование", "специалисты"],
+          "priority": 3
+        },
+        {
+          "action": "Контроль качества",
+          "parameters": {"quality_metrics": [], "testing": true},
+          "duration": 120,
+          "dependencies": ["Выполнение основных задач"],
+          "resources": ["тестовое оборудование", "QA специалисты"],
+          "priority": 4
+        },
+        {
+          "action": "Сдача проекта",
+          "parameters": {"delivery": "клиенту", "documentation": true},
+          "duration": 60,
+          "dependencies": ["Контроль качества"],
+          "resources": ["презентационные материалы"],
+          "priority": 5
+        }
+      ]
+    }
+  ]
+}

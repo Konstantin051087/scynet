@@ -1,0 +1,52 @@
+// planning/task_planner/plan_library/travel.plans
+{
+  "domain": "travel",
+  "templates": [
+    {
+      "name": "Планирование поездки",
+      "keywords": ["поездка", "путешествие", "отпуск", "билеты", "отель"],
+      "steps": [
+        {
+          "action": "Исследование направления",
+          "parameters": {"destination": "", "budget": 0},
+          "duration": 60,
+          "dependencies": [],
+          "resources": ["интернет", "поисковые системы"],
+          "priority": 1
+        },
+        {
+          "action": "Бронирование транспорта",
+          "parameters": {"transport_type": "самолет/поезд"},
+          "duration": 30,
+          "dependencies": ["Исследование направления"],
+          "resources": ["интернет", "банковская карта"],
+          "priority": 2
+        },
+        {
+          "action": "Бронирование жилья",
+          "parameters": {"accommodation_type": "отель/апартаменты"},
+          "duration": 30,
+          "dependencies": ["Исследование направления"],
+          "resources": ["интернет", "банковская карта"],
+          "priority": 2
+        },
+        {
+          "action": "Планирование маршрута",
+          "parameters": {"attractions": [], "activities": []},
+          "duration": 45,
+          "dependencies": ["Исследование направления"],
+          "resources": ["карты", "путеводители"],
+          "priority": 3
+        },
+        {
+          "action": "Подготовка документов",
+          "parameters": {"documents": ["паспорт", "билеты", "страховка"]},
+          "duration": 20,
+          "dependencies": ["Бронирование транспорта"],
+          "resources": ["документы", "принтер"],
+          "priority": 4
+        }
+      ]
+    }
+  ]
+}

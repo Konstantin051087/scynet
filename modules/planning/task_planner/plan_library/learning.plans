@@ -1,0 +1,52 @@
+// planning/task_planner/plan_library/learning.plans
+{
+  "domain": "learning",
+  "templates": [
+    {
+      "name": "Изучение нового навыка",
+      "keywords": ["изучить", "навык", "обучение", "курс", "практика"],
+      "steps": [
+        {
+          "action": "Определение целей обучения",
+          "parameters": {"learning_goals": [], "success_criteria": []},
+          "duration": 30,
+          "dependencies": [],
+          "resources": ["методические материалы"],
+          "priority": 1
+        },
+        {
+          "action": "Поиск учебных материалов",
+          "parameters": {"materials_type": ["книги", "курсы", "видео"]},
+          "duration": 60,
+          "dependencies": ["Определение целей обучения"],
+          "resources": ["интернет", "библиотека"],
+          "priority": 2
+        },
+        {
+          "action": "Изучение теории",
+          "parameters": {"study_method": "чтение/просмотр", "notes": true},
+          "duration": 180,
+          "dependencies": ["Поиск учебных материалов"],
+          "resources": ["учебные материалы", "блокнот"],
+          "priority": 3
+        },
+        {
+          "action": "Практическое применение",
+          "parameters": {"practice_type": "упражнения/проекты"},
+          "duration": 240,
+          "dependencies": ["Изучение теории"],
+          "resources": ["практическое оборудование", "инструменты"],
+          "priority": 4
+        },
+        {
+          "action": "Оценка прогресса",
+          "parameters": {"assessment_method": "тестирование/самооценка"},
+          "duration": 45,
+          "dependencies": ["Практическое применение"],
+          "resources": ["тестовые материалы"],
+          "priority": 5
+        }
+      ]
+    }
+  ]
+}

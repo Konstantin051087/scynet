@@ -1,0 +1,82 @@
+// planning/task_planner/plan_library/cooking.plans
+{
+  "domain": "cooking",
+  "templates": [
+    {
+      "name": "Приготовление основного блюда",
+      "keywords": ["приготовить", "блюдо", "рецепт", "еда", "ужин", "обед"],
+      "steps": [
+        {
+          "action": "Подготовка ингредиентов",
+          "parameters": {"ingredients": [], "preparation": "нарезка"},
+          "duration": 15,
+          "dependencies": [],
+          "resources": ["нож", "разделочная доска"],
+          "priority": 1
+        },
+        {
+          "action": "Подготовка оборудования",
+          "parameters": {"equipment": ["плита", "сковорода"]},
+          "duration": 5,
+          "dependencies": [],
+          "resources": ["кухонное оборудование"],
+          "priority": 1
+        },
+        {
+          "action": "Термическая обработка",
+          "parameters": {"temperature": "средняя", "time": "по рецепту"},
+          "duration": 30,
+          "dependencies": ["Подготовка ингредиентов", "Подготовка оборудования"],
+          "resources": ["плита", "сковорода"],
+          "priority": 2
+        },
+        {
+          "action": "Подача блюда",
+          "parameters": {"presentation": "стандартная"},
+          "duration": 5,
+          "dependencies": ["Термическая обработка"],
+          "resources": ["посуда для подачи"],
+          "priority": 3
+        }
+      ]
+    },
+    {
+      "name": "Выпечка",
+      "keywords": ["выпечка", "печь", "торт", "пирог", "десерт"],
+      "steps": [
+        {
+          "action": "Замес теста",
+          "parameters": {"ingredients": ["мука", "яйца", "сахар"]},
+          "duration": 20,
+          "dependencies": [],
+          "resources": ["миска", "миксер"],
+          "priority": 1
+        },
+        {
+          "action": "Подготовка формы",
+          "parameters": {"form_type": "стандартная"},
+          "duration": 5,
+          "dependencies": [],
+          "resources": ["форма для выпечки"],
+          "priority": 1
+        },
+        {
+          "action": "Выпекание",
+          "parameters": {"temperature": 180, "time": "по рецепту"},
+          "duration": 45,
+          "dependencies": ["Замес теста", "Подготовка формы"],
+          "resources": ["духовка"],
+          "priority": 2
+        },
+        {
+          "action": "Охлаждение",
+          "parameters": {"cooling_time": "до комнатной температуры"},
+          "duration": 30,
+          "dependencies": ["Выпекание"],
+          "resources": ["решетка"],
+          "priority": 3
+        }
+      ]
+    }
+  ]
+}
