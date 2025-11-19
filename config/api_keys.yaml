@@ -1,0 +1,19 @@
+api_keys:
+  openweather: "your_openweather_api_key"
+  accuweather: "your_accuweather_api_key"
+
+rate_limits:
+  openweather:
+    max_requests: 60
+    time_window: 60
+  accuweather:
+    max_requests: 50
+    time_window: 60
+
+services:
+  openweather:
+    base_url: "https://api.openweathermap.org/data/2.5/"
+    timeout: 30
+  accuweather:
+    base_url: "http://dataservice.accuweather.com/"
+    timeout: 30

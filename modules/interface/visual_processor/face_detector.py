@@ -5,7 +5,7 @@
 import cv2
 import numpy as np
 import dlib
-from fer import FER
+from deepface import DeepFace
 from typing import List, Dict, Any, Tuple
 import os
 
@@ -13,7 +13,7 @@ class FaceDetector:
     """Класс для детекции лиц и анализа эмоций"""
     
     def __init__(self):
-        self.face_detector = None
+        self.DeepFace = None
         self.landmark_detector = None
         self.emotion_detector = None
         self.is_initialized = False
@@ -22,7 +22,7 @@ class FaceDetector:
         """Инициализация детекторов лиц и эмоций"""
         try:
             # Инициализация детектора лиц OpenCV
-            self.face_detector = cv2.CascadeClassifier(
+            self.DeepFace = cv2.CascadeClassifier(
                 cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
             )
             
@@ -35,7 +35,7 @@ class FaceDetector:
                 print("dlib landmarks недоступен, используется базовый детектор")
             
             # Инициализация детектора эмоций
-            self.emotion_detector = FER(mtcnn=True)
+            self.emotion_detector = DeepFace(mtcnn=True)
             
             self.is_initialized = True
             print("Детектор лиц и эмоций инициализирован")
@@ -66,7 +66,7 @@ class FaceDetector:
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             
             # Детекция лиц
-            faces = self.face_detector.detectMultiScale(
+            faces = self.DeepFace.detectMultiScale(
                 gray,
                 scaleFactor=1.1,
                 minNeighbors=5,
@@ -151,7 +151,7 @@ class FaceDetector:
             self.initialize()
         
         try:
-            # Анализ эмоций с использованием FER
+            # Анализ эмоций с использованием DeepFace
             image = cv2.imread(image_path)
             emotion_results = self.emotion_detector.detect_emotions(image)
             

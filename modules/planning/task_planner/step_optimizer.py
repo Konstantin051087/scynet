@@ -135,6 +135,8 @@ class StepOptimizer:
             simplified_deps = self._simplify_dependencies(step.dependencies, steps_dict)
             step.dependencies = simplified_deps
         
+        # Пересчет длительности после оптимизации зависимостей
+        plan.total_duration = self._calculate_total_duration(plan.steps)
         return plan, self._calculate_improvement(original_duration, plan.total_duration)
     
     def _simplify_dependencies(self, dependencies: List[str], steps_dict: Dict) -> List[str]:
@@ -171,6 +173,8 @@ class StepOptimizer:
                 optimized_steps.append(step)
         
         plan.steps = optimized_steps
+        # Пересчет длительности после оптимизации параллельного выполнения
+        plan.total_duration = self._calculate_total_duration(plan.steps)
         return plan, self._calculate_improvement(original_duration, plan.total_duration)
     
     def _group_steps_for_parallel(self, steps: List[PlanStep]) -> List[List[PlanStep]]:
@@ -211,6 +215,8 @@ class StepOptimizer:
                 # Уменьшаем длительность критических шагов
                 step.duration = max(1, int(step.duration * 0.8))  # Уменьшаем на 20%
         
+        # Пересчет длительности после оптимизации критического пути
+        plan.total_duration = self._calculate_total_duration(plan.steps)
         return plan, self._calculate_improvement(original_duration, plan.total_duration)
     
     def _find_critical_path(self, steps: List[PlanStep]) -> List[str]:
@@ -277,6 +283,8 @@ class StepOptimizer:
             new_duration = max(1, int(step.duration - reduction_per_step))
             step.duration = new_duration
         
+        # Пересчет длительности после оптимизации длительностей
+        plan.total_duration = self._calculate_total_duration(plan.steps)
         return plan, self._calculate_improvement(original_duration, plan.total_duration)
     
     def _calculate_total_duration(self, steps: List[PlanStep]) -> int:

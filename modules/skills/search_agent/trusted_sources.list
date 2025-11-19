@@ -1,0 +1,47 @@
+# Список доверенных источников для поискового агента
+# Формат: по одному URL на строку
+
+# Энциклопедии и справочники
+https://ru.wikipedia.org
+https://www.britannica.com
+https://www.encyclopedia.com
+
+# Научные ресурсы
+https://arxiv.org
+https://scholar.google.com
+https://www.ncbi.nlm.nih.gov
+https://www.nasa.gov
+
+# Технические ресурсы
+https://stackoverflow.com
+https://github.com
+https://habr.com
+https://developer.mozilla.org
+
+# Новостные агентства (международные)
+https://www.reuters.com
+https://apnews.com
+https://www.bbc.com
+https://www.theguardian.com
+
+# Российские СМИ
+https://tass.ru
+https://www.kommersant.ru
+https://www.rbc.ru
+https://www.vedomosti.ru
+
+# Образовательные ресурсы
+https://www.khanacademy.org
+https://www.coursera.org
+https://openedu.ru
+
+# Государственные ресурсы
+https://www.gov.ru
+https://kremlin.ru
+https://www.gosuslugi.ru
+
+# Проверенные блоги экспертов
+https://stratechery.com
+https://waitbutwhy.com
+
+# Добавьте дополнительные источники по мере необходимости

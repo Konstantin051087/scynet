@@ -1,0 +1,90 @@
+"""
+Интеграция с AccuWeather API
+"""
+
+import os
+from typing import Dict, Any
+from .weather import BaseWeatherService
+from ..api_manager import APIRequest
+
+class AccuWeatherService(BaseWeatherService):
+    """Реализация интеграции с AccuWeather"""
+    
+    def _get_api_key(self) -> str:
+        """Получение API ключа AccuWeather"""
+        return (os.getenv('ACCUWEATHER_API_KEY') or 
+                self.config.get('api_keys', {}).get('accuweather') or
+                'your_accuweather_api_key_here')
+    
+    def _get_base_url(self) -> str:
+        """Получение базового URL AccuWeather"""
+        return "http://dataservice.accuweather.com/"
+    
+    async def get_current_weather(self, city: str) -> Dict[str, Any]:
+        """Получение текущей погоды от AccuWeather"""
+        # Сначала получаем location key для города
+        location_key = await self._get_location_key(city)
+        
+        request = APIRequest(
+            service='accuweather',
+            endpoint=f'/currentconditions/v1/{location_key}',
+            params={
+                'apikey': self.api_key,
+                'language': 'ru',
+                'details': 'true'
+            }
+        )
+        
+        # Заглушка для текущей погоды
+        return {
+            'success': True,
+            'provider': 'accuweather',
+            'city': city,
+            'data': {
+                'temperature': 19.8,
+                'weather_text': 'Солнечно',
+                'humidity': 60,
+                'wind_speed': 2.8
+            }
+        }
+    
+    async def get_forecast(self, city: str, days: int = 5) -> Dict[str, Any]:
+        """Получение прогноза погоды от AccuWeather"""
+        location_key = await self._get_location_key(city)
+        
+        request = APIRequest(
+            service='accuweather',
+            endpoint=f'/forecasts/v1/daily/{days}day/{location_key}',
+            params={
+                'apikey': self.api_key,
+                'language': 'ru',
+                'metric': 'true'
+            }
+        )
+        
+        # Заглушка для прогноза
+        return {
+            'success': True,
+            'provider': 'accuweather',
+            'city': city,
+            'days': days,
+            'forecast': []  # Здесь должен быть реальный прогноз
+        }
+    
+    async def _get_location_key(self, city: str) -> str:
+        """Получение ключа локации для AccuWeather"""
+        request = APIRequest(
+            service='accuweather',
+            endpoint='/locations/v1/cities/search',
+            params={
+                'apikey': self.api_key,
+                'q': city,
+                'language': 'ru'
+            }
+        )
+        
+        # Заглушка - возвращаем фиктивный ключ
+        return "12345"
+    
+    def get_provider_name(self) -> str:
+        return "accuweather"

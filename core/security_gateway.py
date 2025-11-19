@@ -5,7 +5,7 @@
 
 import logging
 import re
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Union
 from dataclasses import dataclass
 import hashlib
 import time
@@ -19,6 +19,10 @@ class SecurityCheckResult:
     risk_level: str  # 'low', 'medium', 'high'
     checks_passed: List[str]
     checks_failed: List[str]
+
+class SecurityError(Exception):
+    """Исключение безопасности"""
+    pass
 
 class SecurityGateway:
     """Шлюз безопасности системы"""
@@ -41,6 +45,36 @@ class SecurityGateway:
         self.security_level = config.get('security_level', 'medium')
         
         self.is_initialized = False
+
+    async def validate_input(self, data):
+        """
+        Алиас для validate_request для совместимости с тестами
+    
+        Args:
+            data: Входные данные для проверки
+        
+        Returns:
+            Словарь с результатом проверки безопасности
+        """
+        # Создаем минимальный контекст для проверки
+        class SimpleContext:
+            def __init__(self, data):
+                self.user_input = data
+                self.input_type = 'text'
+                self.request_id = f"validate_input_{int(time.time())}"
+    
+        context = SimpleContext(data)
+        result = await self.validate_request(context)
+    
+        # Возвращаем словарь с ожидаемыми полями
+        return {
+            'approved': result.allowed,
+            'allowed': result.allowed,
+            'reason': result.reason,
+            'risk_level': result.risk_level,
+            'checks_passed': result.checks_passed,
+            'checks_failed': result.checks_failed
+        }
 
     async def initialize(self):
         """Инициализация шлюза безопасности"""
@@ -394,3 +428,13 @@ class SecurityGateway:
     async def get_recent_suspicious_activities(self, limit: int = 50) -> List[Dict[str, Any]]:
         """Получение последних подозрительных активностей"""
         return self.suspicious_activities[-limit:]
+    
+    async def shutdown(self):
+        """Корректное завершение работы шлюза безопасности"""
+        self.logger.info("Завершение работы шлюза безопасности...")
+        self.is_initialized = False
+        self.logger.info("Шлюз безопасности завершил работу")
+
+    async def is_healthy(self) -> bool:
+        """Проверка здоровья шлюза безопасности"""
+        return self.is_initialized

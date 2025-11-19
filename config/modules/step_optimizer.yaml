@@ -1,0 +1,53 @@
+# config/modules/step_optimizer.yaml
+step_optimizer:
+  enabled: true
+  priority: 2
+  
+  # Настройки оптимизации
+  optimization:
+    enabled: true
+    optimization_strategy: "efficiency"  # efficiency, speed, resource_saving
+    max_optimization_time: 10  # секунды
+    enable_heuristic_optimization: true
+    
+  # Настройки аллокатора ресурсов
+  resource_allocation:
+    enabled: true
+    resource_monitoring: true
+    dynamic_allocation: true
+    allocation_strategy: "balanced"  # balanced, aggressive, conservative
+    
+  # Настройки валидации планов
+  plan_validation:
+    enabled: true
+    validation_strictness: "medium"  # low, medium, high
+    enable_simulation: true
+    simulation_depth: 3
+    
+  # Настройки параллельной обработки
+  parallel_processing:
+    enabled: true
+    max_parallel_tasks: 5
+    dependency_analysis: true
+    resource_conflict_detection: true
+    
+  # Настройки качества обслуживания
+  qos:
+    enabled: true
+    response_time_target: 5  # секунды
+    reliability_target: 0.95  # 95%
+    resource_utilization_target: 0.8  # 80%
+    
+  # Настройки обучения
+  learning:
+    enabled: true
+    learning_from_experience: true
+    adaptation_speed: 0.1
+    performance_feedback: true
+    
+  # Настройки производительности
+  performance:
+    cache_optimization_results: true
+    cache_size: 500
+    enable_precomputation: true
+    precomputation_depth: 2

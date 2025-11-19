@@ -262,3 +262,12 @@ class Coordinator:
                 'module_manager': self.module_manager is not None
             }
         }
+    async def is_healthy(self) -> bool:
+        """Проверка здоровья координатора"""
+        return (self.is_running and 
+                self.communication_bus is not None and
+                self.security_gateway is not None and
+                self.performance_monitor is not None and
+                self.intent_analyzer is not None and
+                self.response_synthesizer is not None and
+                self.module_manager is not None)

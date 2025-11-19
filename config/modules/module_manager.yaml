@@ -1,0 +1,21 @@
+module:
+  name: "module_manager"
+  enabled: true
+  category: "core"
+  dependencies: []
+  initialization_priority: 1
+  config:
+    auto_reload: false
+    dependency_check: true
+    health_check_interval: 30
+    log_level: "INFO"
+
+logging:
+  enabled: true
+  log_file: "logs/system/module_manager.log"
+  max_file_size: 10485760
+  backup_count: 5
+
+performance:
+  track_loading_times: true
+  monitor_memory_usage: true

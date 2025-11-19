@@ -67,6 +67,23 @@ class CommunicationBus:
             self.logger.error(f"Ошибка инициализации шины сообщений: {e}")
             raise
 
+    async def is_healthy(self) -> bool:
+        """
+        Проверка здоровья шины сообщений
+        
+        Returns:
+            True если шина работает корректно
+        """
+        try:
+            if self.use_redis and self.redis_client:
+                # Проверяем подключение к Redis
+                await self.redis_client.ping()
+            # Для in-memory проверяем что обработчик запущен
+            return self.is_running and (self.processing_task is not None and not self.processing_task.done())
+        except Exception as e:
+            self.logger.warning(f"Проверка здоровья шины сообщений не пройдена: {e}")
+            return False
+
     async def send_message(self, message: Message) -> str:
         """
         Отправка сообщения в шину

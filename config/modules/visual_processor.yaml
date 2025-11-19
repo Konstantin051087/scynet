@@ -1,0 +1,52 @@
+# config/modules/visual_processor.yaml
+visual_processor:
+  enabled: true
+  priority: 2
+  
+  # Настройки распознавания изображений
+  image_recognition:
+    enabled: true
+    model: "yolov8"
+    confidence_threshold: 0.5
+    max_objects_per_image: 50
+    
+  # Настройки детектора лиц
+  face_detection:
+    enabled: true
+    detect_emotions: true
+    recognition_accuracy: 0.8
+    enable_face_tracking: true
+    
+  # Настройки анализа сцен
+  scene_analysis:
+    enabled: true
+    context_understanding: true
+    spatial_relationships: true
+    scene_classification: true
+    
+  # Настройки генератора визуальных ответов
+  visual_response_generation:
+    enabled: true
+    response_types: ["annotation", "highlight", "generated_image"]
+    quality_level: "high"  # low, medium, high
+    generation_timeout: 30  # секунды
+    
+  # Настройки обработки изображений
+  image_processing:
+    max_image_size: "1920x1080"
+    supported_formats: ["jpg", "png", "webp"]
+    enable_compression: true
+    compression_quality: 85
+    
+  # Настройки модели
+  model:
+    device: "auto"
+    model_size: "medium"  # small, medium, large
+    enable_model_ensembling: false
+    
+  # Настройки производительности
+  performance:
+    batch_processing: true
+    batch_size: 4
+    enable_caching: true
+    cache_size: "1GB"

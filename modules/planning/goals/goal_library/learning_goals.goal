@@ -1,0 +1,37 @@
+// goal_library/learning_goals.goal
+{
+  "version": "1.0",
+  "description": "Библиотека типовых учебных целей", 
+  "templates": {
+    "complete_course": {
+      "title": "Прохождение учебного курса",
+      "description": "Полное прохождение и усвоение материала учебного курса",
+      "priority": "HIGH",
+      "tags": ["learning", "course", "education"],
+      "metrics": {
+        "expected_impact": 0.8,
+        "required_resources": {"time_weekly": 360}
+      }
+    },
+    "master_skill": {
+      "title": "Освоение нового навыка",
+      "description": "Достижение уверенного владения новым практическим навыком",
+      "priority": "MEDIUM",
+      "tags": ["learning", "skill", "practice"],
+      "metrics": {
+        "expected_impact": 0.7,
+        "required_resources": {"time_weekly": 240}
+      }
+    },
+    "prepare_certification": {
+      "title": "Подготовка к сертификации",
+      "description": "Систематическая подготовка к получению профессиональной сертификации",
+      "priority": "HIGH", 
+      "tags": ["learning", "certification", "exam"],
+      "metrics": {
+        "expected_impact": 0.9,
+        "required_resources": {"time_weekly": 420}
+      }
+    }
+  }
+}

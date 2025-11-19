@@ -1,0 +1,44 @@
+# config/modules/speech_recognizer.yaml
+speech_recognizer:
+  enabled: true
+  priority: 1
+  
+  # Настройки аудио обработки
+  audio:
+    sample_rate: 16000
+    channels: 1
+    chunk_size: 1024
+    format: "int16"
+    
+  # Настройки модели
+  model:
+    name: "whisper"
+    version: "base"
+    language: "auto"  # auto, ru, en, etc.
+    device: "auto"
+    
+  # Настройки точности
+  accuracy:
+    confidence_threshold: 0.7
+    enable_confidence_scoring: true
+    min_audio_length: 0.5  # секунды
+    max_audio_length: 30   # секунды
+    
+  # Настройки словаря
+  vocabulary:
+    enable_custom_words: true
+    custom_words_file: "modules/speech_recognizer/vocabulary/custom_words/user_added.txt"
+    enable_accents: true
+    default_accent: "russian"
+    
+  # Настройки производительности
+  performance:
+    batch_size: 1
+    enable_streaming: true
+    stream_buffer_size: 10
+    
+  # Настройки обучения
+  training:
+    enabled: false
+    retrain_interval: 7  # дней
+    fine_tune_on_user_data: true

@@ -1,0 +1,37 @@
+// goal_library/personal_goals.goal
+{
+  "version": "1.0",
+  "description": "Библиотека типовых персональных целей",
+  "templates": {
+    "learn_language": {
+      "title": "Изучение иностранного языка",
+      "description": "Систематическое изучение нового иностранного языка",
+      "priority": "MEDIUM",
+      "tags": ["learning", "language", "personal"],
+      "metrics": {
+        "expected_impact": 0.8,
+        "required_resources": {"time_daily": 30}
+      }
+    },
+    "fitness_goal": {
+      "title": "Регулярные физические упражнения",
+      "description": "Внедрение регулярной физической активности в распорядок дня",
+      "priority": "HIGH", 
+      "tags": ["health", "fitness", "personal"],
+      "metrics": {
+        "expected_impact": 0.9,
+        "required_resources": {"time_daily": 45}
+      }
+    },
+    "reading_habit": {
+      "title": "Развитие привычки чтения",
+      "description": "Ежедневное чтение для расширения кругозора",
+      "priority": "MEDIUM",
+      "tags": ["learning", "reading", "personal"],
+      "metrics": {
+        "expected_impact": 0.7,
+        "required_resources": {"time_daily": 20}
+      }
+    }
+  }
+}

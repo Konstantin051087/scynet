@@ -1,0 +1,78 @@
+# security_policies.yaml - Политики безопасности системы Синтетический Разум
+
+security:
+  enabled: true
+  audit_log: true
+  log_level: INFO
+  max_request_size: 10MB
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60
+  input_validation:
+    enabled: true
+    max_text_length: 5000
+    allowed_file_types:
+      - jpg
+      - png
+      - wav
+      - mp3
+      - txt
+  authentication:
+    enabled: false
+    method: jwt
+  content_filter:
+    enabled: true
+    filter_profanity: true
+    block_malicious_content: true
+  data_privacy:
+    encrypt_sensitive_data: true
+    data_retention_days: 30
+
+modules:
+  security_gateway:
+    enabled: true
+    check_input: true
+    check_output: true
+    log_security_events: true
+    security_level: medium
+
+policies:
+  input_sanitization:
+    - type: sql_injection
+      action: block
+      severity: high
+    - type: xss
+      action: block
+      severity: high
+    - type: path_traversal
+      action: block
+      severity: high
+    - type: command_injection
+      action: block
+      severity: high
+
+  output_sanitization:
+    - type: sensitive_data
+      action: filter
+      severity: medium
+    - type: personal_info
+      action: anonymize
+      severity: medium
+
+  access_control:
+    - resource: system_config
+      permission: admin_only
+    - resource: user_data
+      permission: authenticated
+    - resource: public_api
+      permission: everyone
+
+audit:
+  enabled: true
+  log_file: logs/audit/security_events.log
+  retention_days: 90
+  events_to_log:
+    - authentication_attempts
+    - security_violations
+    - configuration_changes
+    - data_access

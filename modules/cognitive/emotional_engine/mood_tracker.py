@@ -6,22 +6,30 @@
 import time
 import json
 import sqlite3
+import logging
+import os
 from typing import Dict, List, Optional
 from datetime import datetime, timedelta
-import os
 
 class MoodTracker:
-    def __init__(self, db_path="data/runtime/mood_tracking.db"):
-        self.db_path = db_path
-        self.user_mood_history = {}
-        self.system_mood_history = []
-        
-        self.initialize_database()
+    def __init__(self, db_path: str = "data/runtime/mood_tracking.db"):
+        try:
+            self.logger = logging.getLogger("MoodTracker")
+            self.db_path = db_path
+            self.user_mood_history = {}
+            self.system_mood_history = []
+            
+            self.initialize_database()
+            self.logger.info("✅ Mood Tracker инициализирован")
+        except Exception as e:
+            self.logger = logging.getLogger("MoodTracker")
+            self.logger.error(f"❌ Ошибка инициализации Mood Tracker: {e}")
     
     def initialize_database(self):
         """Инициализация базы данных для трекинга настроения"""
         try:
-            os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
+            # ИСПРАВЛЕНО: создаем директорию рекурсивно
+            os.makedirs("data/runtime", exist_ok=True)
             
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
@@ -66,41 +74,54 @@ class MoodTracker:
             
             conn.commit()
             conn.close()
+            self.logger.info("✅ База данных настроения инициализирована")
             
         except Exception as e:
-            print(f"Error initializing mood database: {e}")
+            self.logger.error(f"❌ Ошибка инициализации базы данных настроения: {e}")
     
     def track_mood(self, user_id: Optional[str], detected_emotions: Dict[str, float], 
                    system_mood: str, context: str = ""):
         """Трекинг настроения пользователя и системы"""
-        timestamp = datetime.now()
-        
-        # Трекинг настроения системы
-        self._track_system_mood(system_mood, detected_emotions, context, timestamp)
-        
-        # Трекинг настроения пользователя
-        if user_id:
-            self._track_user_mood(user_id, detected_emotions, context, timestamp)
-        
-        # Анализ эмоциональных паттернов
-        if user_id:
-            self._analyze_emotion_patterns(user_id, detected_emotions, timestamp)
+        try:
+            timestamp = datetime.now()
+            
+            # Трекинг настроения системы
+            self._track_system_mood(system_mood, detected_emotions, context, timestamp)
+            
+            # Трекинг настроения пользователя
+            if user_id:
+                self._track_user_mood(user_id, detected_emotions, context, timestamp)
+            
+            # Анализ эмоциональных паттернов
+            if user_id:
+                self._analyze_emotion_patterns(user_id, detected_emotions, timestamp)
+                
+        except Exception as e:
+            self.logger.error(f"❌ Ошибка трекинга настроения: {e}")
     
     def _track_system_mood(self, system_mood: str, detected_emotions: Dict[str, float],
                           context: str, timestamp: datetime):
         """Трекинг настроения системы"""
-        mood_record = {
-            'timestamp': timestamp,
-            'mood': system_mood,
-            'intensity': max(detected_emotions.values()) if detected_emotions else 0.5,
-            'context': context,
-            'trigger_emotion': max(detected_emotions.items(), key=lambda x: x[1])[0] if detected_emotions else 'neutral'
-        }
-        
-        self.system_mood_history.append(mood_record)
-        
-        # Сохранение в базу данных
         try:
+            # ИСПРАВЛЕНО: проверка на пустой detected_emotions
+            if detected_emotions:
+                intensity = max(detected_emotions.values())
+                trigger_emotion = max(detected_emotions.items(), key=lambda x: x[1])[0]
+            else:
+                intensity = 0.5
+                trigger_emotion = 'neutral'
+            
+            mood_record = {
+                'timestamp': timestamp,
+                'mood': system_mood,
+                'intensity': intensity,
+                'context': context,
+                'trigger_emotion': trigger_emotion
+            }
+            
+            self.system_mood_history.append(mood_record)
+            
+            # Сохранение в базу данных
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
@@ -113,7 +134,7 @@ class MoodTracker:
             conn.close()
             
         except Exception as e:
-            print(f"Error saving system mood: {e}")
+            self.logger.error(f"❌ Ошибка сохранения настроения системы: {e}")
         
         # Ограничение размера истории в памяти
         if len(self.system_mood_history) > 1000:
@@ -122,23 +143,30 @@ class MoodTracker:
     def _track_user_mood(self, user_id: str, detected_emotions: Dict[str, float],
                         context: str, timestamp: datetime):
         """Трекинг настроения пользователя"""
-        if user_id not in self.user_mood_history:
-            self.user_mood_history[user_id] = []
-        
-        dominant_emotion = max(detected_emotions.items(), key=lambda x: x[1]) if detected_emotions else ('neutral', 1.0)
-        
-        user_mood_record = {
-            'timestamp': timestamp,
-            'detected_emotions': detected_emotions,
-            'dominant_emotion': dominant_emotion[0],
-            'intensity': dominant_emotion[1],
-            'context': context
-        }
-        
-        self.user_mood_history[user_id].append(user_mood_record)
-        
-        # Сохранение в базу данных
         try:
+            if user_id not in self.user_mood_history:
+                self.user_mood_history[user_id] = []
+            
+            # ИСПРАВЛЕНО: проверка на пустой detected_emotions
+            if detected_emotions:
+                dominant_emotion = max(detected_emotions.items(), key=lambda x: x[1])
+                dominant_emotion_name = dominant_emotion[0]
+                dominant_emotion_intensity = dominant_emotion[1]
+            else:
+                dominant_emotion_name = 'neutral'
+                dominant_emotion_intensity = 1.0
+            
+            user_mood_record = {
+                'timestamp': timestamp,
+                'detected_emotions': detected_emotions,
+                'dominant_emotion': dominant_emotion_name,
+                'intensity': dominant_emotion_intensity,
+                'context': context
+            }
+            
+            self.user_mood_history[user_id].append(user_mood_record)
+            
+            # Сохранение в базу данных
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
@@ -147,13 +175,13 @@ class MoodTracker:
             cursor.execute('''
                 INSERT INTO user_mood (user_id, timestamp, detected_emotions, dominant_emotion, intensity, interaction_context)
                 VALUES (?, ?, ?, ?, ?, ?)
-            ''', (user_id, timestamp.isoformat(), emotions_json, dominant_emotion[0], dominant_emotion[1], context))
+            ''', (user_id, timestamp.isoformat(), emotions_json, dominant_emotion_name, dominant_emotion_intensity, context))
             
             conn.commit()
             conn.close()
             
         except Exception as e:
-            print(f"Error saving user mood: {e}")
+            self.logger.error(f"❌ Ошибка сохранения настроения пользователя: {e}")
         
         # Ограничение размера истории в памяти
         if len(self.user_mood_history[user_id]) > 500:
@@ -162,9 +190,13 @@ class MoodTracker:
     def _analyze_emotion_patterns(self, user_id: str, detected_emotions: Dict[str, float],
                                 timestamp: datetime):
         """Анализ эмоциональных паттернов пользователя"""
-        dominant_emotion = max(detected_emotions.items(), key=lambda x: x[1])[0]
-        
         try:
+            # ИСПРАВЛЕНО: проверка на пустой detected_emotions
+            if detected_emotions:
+                dominant_emotion = max(detected_emotions.items(), key=lambda x: x[1])[0]
+            else:
+                dominant_emotion = 'neutral'
+            
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
@@ -195,7 +227,7 @@ class MoodTracker:
             conn.close()
             
         except Exception as e:
-            print(f"Error analyzing emotion patterns: {e}")
+            self.logger.error(f"❌ Ошибка анализа эмоциональных паттернов: {e}")
     
     def get_user_mood_summary(self, user_id: str, days: int = 7) -> Dict:
         """Получение сводки настроения пользователя"""

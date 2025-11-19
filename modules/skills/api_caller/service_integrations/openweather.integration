@@ -1,0 +1,74 @@
+"""
+Интеграция с OpenWeather API
+"""
+
+import os
+from typing import Dict, Any
+from .weather import BaseWeatherService
+from ..api_manager import APIRequest
+
+class OpenWeatherService(BaseWeatherService):
+    """Реализация интеграции с OpenWeather"""
+    
+    def _get_api_key(self) -> str:
+        """Получение API ключа OpenWeather"""
+        return (os.getenv('OPENWEATHER_API_KEY') or 
+                self.config.get('api_keys', {}).get('openweather') or
+                'your_openweather_api_key_here')
+    
+    def _get_base_url(self) -> str:
+        """Получение базового URL OpenWeather"""
+        return "https://api.openweathermap.org/data/2.5/"
+    
+    async def get_current_weather(self, city: str) -> Dict[str, Any]:
+        """Получение текущей погоды от OpenWeather"""
+        request = APIRequest(
+            service='openweather',
+            endpoint='/weather',
+            params={
+                'q': city,
+                'appid': self.api_key,
+                'units': 'metric',
+                'lang': 'ru'
+            }
+        )
+        
+        # Здесь должен быть вызов через APIManager
+        # Для примера возвращаем заглушку
+        return {
+            'success': True,
+            'provider': 'openweather',
+            'city': city,
+            'data': {
+                'temperature': 20.5,
+                'humidity': 65,
+                'description': 'ясно',
+                'wind_speed': 3.2
+            }
+        }
+    
+    async def get_forecast(self, city: str, days: int = 5) -> Dict[str, Any]:
+        """Получение прогноза погоды от OpenWeather"""
+        request = APIRequest(
+            service='openweather',
+            endpoint='/forecast',
+            params={
+                'q': city,
+                'appid': self.api_key,
+                'units': 'metric',
+                'lang': 'ru',
+                'cnt': days
+            }
+        )
+        
+        # Заглушка для прогноза
+        return {
+            'success': True,
+            'provider': 'openweather',
+            'city': city,
+            'days': days,
+            'forecast': []  # Здесь должен быть реальный прогноз
+        }
+    
+    def get_provider_name(self) -> str:
+        return "openweather"

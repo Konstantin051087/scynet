@@ -1,0 +1,392 @@
+[
+  {
+    "timestamp": "2025-11-18T21:29:08.462557",
+    "timestamp_seconds": 1763483348.462549,
+    "system": {
+      "cpu_usage_percent": 7.7,
+      "memory_usage_percent": 65.4,
+      "memory_available_gb": 4.02,
+      "disk_usage_percent": 76.9,
+      "disk_free_gb": 102.19
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:30:08.564308",
+    "timestamp_seconds": 1763483408.5643063,
+    "system": {
+      "cpu_usage_percent": 23.7,
+      "memory_usage_percent": 68.3,
+      "memory_available_gb": 3.68,
+      "disk_usage_percent": 76.9,
+      "disk_free_gb": 102.19
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:31:08.665374",
+    "timestamp_seconds": 1763483468.6653714,
+    "system": {
+      "cpu_usage_percent": 31.6,
+      "memory_usage_percent": 65.8,
+      "memory_available_gb": 3.97,
+      "disk_usage_percent": 76.9,
+      "disk_free_gb": 102.19
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:32:08.766517",
+    "timestamp_seconds": 1763483528.766515,
+    "system": {
+      "cpu_usage_percent": 28.2,
+      "memory_usage_percent": 65.1,
+      "memory_available_gb": 4.05,
+      "disk_usage_percent": 76.9,
+      "disk_free_gb": 102.08
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:33:08.867845",
+    "timestamp_seconds": 1763483588.8678415,
+    "system": {
+      "cpu_usage_percent": 16.2,
+      "memory_usage_percent": 66.1,
+      "memory_available_gb": 3.94,
+      "disk_usage_percent": 76.9,
+      "disk_free_gb": 102.18
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:34:08.970753",
+    "timestamp_seconds": 1763483648.9707506,
+    "system": {
+      "cpu_usage_percent": 24.3,
+      "memory_usage_percent": 66.0,
+      "memory_available_gb": 3.95,
+      "disk_usage_percent": 76.9,
+      "disk_free_gb": 102.17
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:35:09.072832",
+    "timestamp_seconds": 1763483709.0728297,
+    "system": {
+      "cpu_usage_percent": 45.0,
+      "memory_usage_percent": 65.2,
+      "memory_available_gb": 4.05,
+      "disk_usage_percent": 76.9,
+      "disk_free_gb": 102.17
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:36:09.175907",
+    "timestamp_seconds": 1763483769.175905,
+    "system": {
+      "cpu_usage_percent": 61.5,
+      "memory_usage_percent": 64.0,
+      "memory_available_gb": 4.19,
+      "disk_usage_percent": 77.0,
+      "disk_free_gb": 101.63
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:37:09.278647",
+    "timestamp_seconds": 1763483829.2786448,
+    "system": {
+      "cpu_usage_percent": 33.3,
+      "memory_usage_percent": 64.4,
+      "memory_available_gb": 4.14,
+      "disk_usage_percent": 77.6,
+      "disk_free_gb": 98.92
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:38:09.380675",
+    "timestamp_seconds": 1763483889.3806732,
+    "system": {
+      "cpu_usage_percent": 35.9,
+      "memory_usage_percent": 64.8,
+      "memory_available_gb": 4.08,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.91
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:39:09.484035",
+    "timestamp_seconds": 1763483949.4840326,
+    "system": {
+      "cpu_usage_percent": 18.9,
+      "memory_usage_percent": 64.3,
+      "memory_available_gb": 4.14,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.9
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:40:09.586426",
+    "timestamp_seconds": 1763484009.5864232,
+    "system": {
+      "cpu_usage_percent": 5.0,
+      "memory_usage_percent": 64.7,
+      "memory_available_gb": 4.1,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.9
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:41:09.687581",
+    "timestamp_seconds": 1763484069.6875784,
+    "system": {
+      "cpu_usage_percent": 37.5,
+      "memory_usage_percent": 64.4,
+      "memory_available_gb": 4.14,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.9
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:42:09.789845",
+    "timestamp_seconds": 1763484129.7898424,
+    "system": {
+      "cpu_usage_percent": 41.0,
+      "memory_usage_percent": 65.4,
+      "memory_available_gb": 4.02,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.9
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:43:09.892406",
+    "timestamp_seconds": 1763484189.8924007,
+    "system": {
+      "cpu_usage_percent": 50.0,
+      "memory_usage_percent": 64.7,
+      "memory_available_gb": 4.1,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.9
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:44:09.996694",
+    "timestamp_seconds": 1763484249.9966915,
+    "system": {
+      "cpu_usage_percent": 15.8,
+      "memory_usage_percent": 65.0,
+      "memory_available_gb": 4.07,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.89
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:45:10.098635",
+    "timestamp_seconds": 1763484310.0986323,
+    "system": {
+      "cpu_usage_percent": 15.4,
+      "memory_usage_percent": 65.7,
+      "memory_available_gb": 3.98,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.89
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:46:10.201555",
+    "timestamp_seconds": 1763484370.2015522,
+    "system": {
+      "cpu_usage_percent": 7.7,
+      "memory_usage_percent": 65.2,
+      "memory_available_gb": 4.05,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.89
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:47:10.303186",
+    "timestamp_seconds": 1763484430.3031843,
+    "system": {
+      "cpu_usage_percent": 10.3,
+      "memory_usage_percent": 65.2,
+      "memory_available_gb": 4.04,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.88
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:48:10.404480",
+    "timestamp_seconds": 1763484490.4044771,
+    "system": {
+      "cpu_usage_percent": 23.1,
+      "memory_usage_percent": 66.0,
+      "memory_available_gb": 3.94,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.88
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:49:10.507971",
+    "timestamp_seconds": 1763484550.5079694,
+    "system": {
+      "cpu_usage_percent": 31.6,
+      "memory_usage_percent": 65.9,
+      "memory_available_gb": 3.96,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.87
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:50:10.610228",
+    "timestamp_seconds": 1763484610.6102257,
+    "system": {
+      "cpu_usage_percent": 2.6,
+      "memory_usage_percent": 66.3,
+      "memory_available_gb": 3.91,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.87
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:51:10.712136",
+    "timestamp_seconds": 1763484670.7121341,
+    "system": {
+      "cpu_usage_percent": 55.0,
+      "memory_usage_percent": 71.5,
+      "memory_available_gb": 3.31,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.87
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:52:10.815632",
+    "timestamp_seconds": 1763484730.8156297,
+    "system": {
+      "cpu_usage_percent": 39.5,
+      "memory_usage_percent": 65.2,
+      "memory_available_gb": 4.04,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.86
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:53:10.917540",
+    "timestamp_seconds": 1763484790.917537,
+    "system": {
+      "cpu_usage_percent": 5.3,
+      "memory_usage_percent": 66.2,
+      "memory_available_gb": 3.93,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.86
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:54:11.021770",
+    "timestamp_seconds": 1763484851.0217676,
+    "system": {
+      "cpu_usage_percent": 30.8,
+      "memory_usage_percent": 69.5,
+      "memory_available_gb": 3.54,
+      "disk_usage_percent": 77.9,
+      "disk_free_gb": 97.86
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:55:11.123178",
+    "timestamp_seconds": 1763484911.1231737,
+    "system": {
+      "cpu_usage_percent": 45.9,
+      "memory_usage_percent": 56.1,
+      "memory_available_gb": 5.1,
+      "disk_usage_percent": 78.2,
+      "disk_free_gb": 96.4
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:56:11.225458",
+    "timestamp_seconds": 1763484971.2254562,
+    "system": {
+      "cpu_usage_percent": 65.8,
+      "memory_usage_percent": 51.5,
+      "memory_available_gb": 5.63,
+      "disk_usage_percent": 78.7,
+      "disk_free_gb": 94.4
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:57:11.327561",
+    "timestamp_seconds": 1763485031.3275588,
+    "system": {
+      "cpu_usage_percent": 81.6,
+      "memory_usage_percent": 55.1,
+      "memory_available_gb": 5.21,
+      "disk_usage_percent": 78.9,
+      "disk_free_gb": 93.31
+    },
+    "application": {},
+    "overall_health": "healthy"
+  },
+  {
+    "timestamp": "2025-11-18T21:58:11.428992",
+    "timestamp_seconds": 1763485091.4289904,
+    "system": {
+      "cpu_usage_percent": 27.5,
+      "memory_usage_percent": 58.2,
+      "memory_available_gb": 4.85,
+      "disk_usage_percent": 72.0,
+      "disk_free_gb": 123.64
+    },
+    "application": {},
+    "overall_health": "healthy"
+  }
+]

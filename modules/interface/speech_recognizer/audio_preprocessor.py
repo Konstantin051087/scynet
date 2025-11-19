@@ -6,7 +6,7 @@
 import numpy as np
 import librosa
 import scipy.signal as signal
-from typing import Optional, Tuple, Union
+from typing import Optional, Tuple, Union, Dict
 import logging
 from pathlib import Path
 

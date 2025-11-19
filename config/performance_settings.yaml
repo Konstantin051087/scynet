@@ -1,0 +1,62 @@
+# config/performance_settings.yaml
+performance_settings:
+  # Настройки мониторинга
+  monitoring:
+    enabled: true
+    metrics_collection_interval: 60  # секунды
+    enable_real_time_alerts: true
+    health_check_interval: 30  # секунды
+    
+  # Настройки кэширования
+  caching:
+    enabled: true
+    default_ttl: 300  # секунды
+    max_cache_size: "1GB"
+    cache_eviction_policy: "lru"  # lru, lfu, random
+    
+  # Настройки базы данных
+  database:
+    connection_pool_size: 20
+    max_overflow: 30
+    pool_recycle: 3600  # секунды
+    query_timeout: 30  # секунды
+    
+  # Настройки памяти
+  memory:
+    max_memory_usage: "80%"  # процент от общей памяти
+    garbage_collection_interval: 300  # секунды
+    memory_leak_detection: true
+    
+  # Настройки процессора
+  cpu:
+    max_cpu_usage: "80%"  # процент от общего CPU
+    thread_pool_size: 10
+    enable_cpu_affinity: false
+    
+  # Настройки ввода-вывода
+  io:
+    max_file_descriptors: 10000
+    io_timeout: 30  # секунды
+    enable_async_io: true
+    
+  # Настройки сети
+  network:
+    max_connections: 1000
+    connection_timeout: 10  # секунды
+    keep_alive: true
+    keep_alive_timeout: 5  # секунды
+    
+  # Целевые показатели производительности
+  targets:
+    response_time:
+      p95: 2.0  # секунды
+      p99: 5.0  # секунды
+    availability: 0.999  # 99.9%
+    error_rate: 0.01  # 1%
+    
+  # Настройки оптимизации
+  optimization:
+    enabled: true
+    auto_tuning: true
+    tuning_interval: 24  # часов
+    performance_profiling: true

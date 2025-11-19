@@ -6,7 +6,7 @@
 import logging
 import time
 import asyncio
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Union
 from dataclasses import dataclass
 import psutil
 import json
@@ -50,6 +50,55 @@ class PerformanceMonitor:
         
         self.is_initialized = False
 
+    async def compare_metrics(self, current_metrics: Dict[str, Any], baseline_metrics: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Сравнение текущих метрик с базовыми значениями
+        
+        Args:
+            current_metrics: Текущие метрики для сравнения
+            baseline_metrics: Базовые метрики (эталонные значения)
+            
+        Returns:
+            Словарь с результатами сравнения
+        """
+        try:
+            deviations = {}
+            
+            for metric_name, current_value in current_metrics.items():
+                if metric_name in baseline_metrics:
+                    baseline_value = baseline_metrics[metric_name]
+                    
+                    # Безопасное сравнение числовых значений
+                    if isinstance(current_value, (int, float)) and isinstance(baseline_value, (int, float)):
+                        # Избегаем деления на ноль
+                        if baseline_value == 0:
+                            deviation_percent = 0.0
+                        else:
+                            deviation_percent = abs((current_value - baseline_value) / baseline_value * 100)
+                        
+                        deviations[metric_name] = {
+                            'current': current_value,
+                            'baseline': baseline_value,
+                            'deviation_percent': deviation_percent,
+                            'status': 'WARNING' if deviation_percent > 20 else 'NORMAL'
+                        }
+                    else:
+                        # Для нечисловых метрик сравниваем как строки
+                        current_str = str(current_value)
+                        baseline_str = str(baseline_value)
+                        deviations[metric_name] = {
+                            'current': current_str,
+                            'baseline': baseline_str,
+                            'deviation_percent': 0,
+                            'status': 'DIFFERENT' if current_str != baseline_str else 'IDENTICAL'
+                        }
+            
+            return deviations
+            
+        except Exception as e:
+            self.logger.error(f"Ошибка сравнения метрик: {e}")
+            return {'error': str(e)}
+
     async def initialize(self):
         """Инициализация монитора производительности"""
         try:
@@ -70,6 +119,15 @@ class PerformanceMonitor:
         except Exception as e:
             self.logger.error(f"Ошибка инициализации монитора производительности: {e}")
             raise
+
+    async def is_healthy(self) -> bool:
+        """
+        Проверка здоровья монитора производительности
+        
+        Returns:
+            True если монитор работает корректно
+        """
+        return self.is_initialized and self.is_monitoring
 
     async def record_request(self, context):
         """
@@ -151,8 +209,10 @@ class PerformanceMonitor:
             # Метрики приложения
             app_metrics = await self._calculate_application_metrics()
             
+            current_time = time.time()
             health_status = {
                 'timestamp': datetime.now().isoformat(),
+                'timestamp_seconds': current_time,  # Добавляем числовую метку времени
                 'system': {
                     'cpu_usage_percent': cpu,
                     'memory_usage_percent': memory.percent,
@@ -271,7 +331,7 @@ class PerformanceMonitor:
         elif memory > 90:
             health_score -= 40
             
-        if app_metrics.get('error_rate', 0) > 5:
+        if app_metrics and app_metrics.get('error_rate', 0) > 5:
             health_score -= 20
         elif app_metrics.get('error_rate', 0) > 10:
             health_score -= 40
@@ -376,18 +436,21 @@ class PerformanceMonitor:
                 with open(metrics_path, 'r', encoding='utf-8') as f:
                     historical_data = json.load(f)
                 
-                # Восстанавливаем объекты метрик
+                # Восстанавливаем объекты метрик с преобразованием типов
                 for data in historical_data:
-                    metrics = PerformanceMetrics(
-                        timestamp=data['timestamp'],
-                        request_id=data['request_id'],
-                        processing_time=data['processing_time'],
-                        module_times=data['module_times'],
-                        memory_usage=data['memory_usage'],
-                        cpu_usage=data['cpu_usage'],
-                        error_count=data['error_count']
-                    )
-                    self.metrics_history.append(metrics)
+                    try:
+                        metrics = PerformanceMetrics(
+                            timestamp=float(data['timestamp']),  # Преобразуем в float
+                            request_id=data['request_id'],
+                            processing_time=float(data['processing_time']),
+                            module_times=data['module_times'],
+                            memory_usage=float(data['memory_usage']),
+                            cpu_usage=float(data['cpu_usage']),
+                            error_count=int(data['error_count'])
+                        )
+                        self.metrics_history.append(metrics)
+                    except (KeyError, ValueError, TypeError) as e:
+                        self.logger.warning(f"Пропуск некорректной метрики: {e}")
                 
                 self.logger.info(f"Загружено {len(historical_data)} исторических метрик")
                 
@@ -400,12 +463,31 @@ class PerformanceMonitor:
             retention_seconds = self.metrics_retention * 86400  # Перевод в секунды
             cutoff_time = time.time() - retention_seconds
             
+            # Функция для безопасного сравнения временных меток
+            def is_metric_recent(metric_timestamp):
+                """Проверяет, является ли метрика не устаревшей"""
+                try:
+                    # Гарантируем, что оба значения - числа
+                    metric_time = float(metric_timestamp)
+                    cutoff = float(cutoff_time)
+                    return metric_time > cutoff
+                except (TypeError, ValueError) as e:
+                    self.logger.warning(f"Некорректная временная метка: {metric_timestamp}, ошибка: {e}")
+                    return False
+            
             # Очищаем историю запросов
-            self.metrics_history = [m for m in self.metrics_history if m.timestamp > cutoff_time]
+            self.metrics_history = [
+                m for m in self.metrics_history 
+                if is_metric_recent(getattr(m, 'timestamp', 0))
+            ]
             
             # Очищаем системные метрики
-            self.system_metrics = [m for m in self.system_metrics 
-                                 if m.get('timestamp', 0) > cutoff_time]
+            self.system_metrics = [
+                m for m in self.system_metrics 
+                if is_metric_recent(m.get('timestamp_seconds', 0))
+            ]
+            
+            self.logger.debug(f"Очистка метрик завершена. Осталось: {len(self.metrics_history)} запросов, {len(self.system_metrics)} системных метрик")
             
         except Exception as e:
             self.logger.error(f"Ошибка очистки старых метрик: {e}")

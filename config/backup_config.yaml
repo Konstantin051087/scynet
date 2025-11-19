@@ -1,0 +1,68 @@
+# config/backup_config.yaml
+backup_config:
+  # Общие настройки резервного копирования
+  general:
+    enabled: true
+    backup_strategy: "incremental"  # full, incremental, differential
+    encryption: true
+    compression: true
+    
+  # Расписание резервного копирования
+  schedule:
+    full_backup:
+      enabled: true
+      frequency: "weekly"  # daily, weekly, monthly
+      day_of_week: "sunday"
+      time: "02:00"
+      
+    incremental_backup:
+      enabled: true
+      frequency: "daily"
+      time: "01:00"
+      
+  # Что备份ровать
+  backup_scope:
+    databases: true
+    model_files: true
+    configuration: true
+    user_data: true
+    logs: false
+    
+  # Настройки хранения
+  storage:
+    local:
+      enabled: true
+      path: "./backups"
+      retention_days: 30
+      
+    cloud:
+      enabled: false
+      provider: "aws"  # aws, google, azure
+      bucket: "${BACKUP_BUCKET}"
+      region: "us-east-1"
+      
+    external:
+      enabled: false
+      type: "ftp"  # ftp, sftp, nas
+      server: "${BACKUP_SERVER}"
+      
+  # Настройки уведомлений
+  notifications:
+    enabled: true
+    on_success: false
+    on_failure: true
+    on_warning: true
+    
+  # Настройки восстановления
+  recovery:
+    test_restore_interval: 7  # дней
+    auto_verification: true
+    recovery_time_objective: 4  # часов
+    recovery_point_objective: 1  # час
+    
+  # Настройки безопасности
+  security:
+    encryption_key: "${BACKUP_ENCRYPTION_KEY}"
+    access_control: true
+    backup_rotation: true
+    secure_deletion: true

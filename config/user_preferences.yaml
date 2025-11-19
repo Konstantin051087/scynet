@@ -1,0 +1,51 @@
+# config/user_preferences.yaml
+user_preferences:
+  # Общие предпочтения
+  general:
+    language: "ru"
+    timezone: "Europe/Moscow"
+    date_format: "DD.MM.YYYY"
+    time_format: "24h"
+    
+  # Предпочтения интерфейса
+  interface:
+    theme: "auto"  # auto, light, dark
+    font_size: "medium"
+    animations_enabled: true
+    sound_effects: true
+    
+  # Предпочтения взаимодействия
+  interaction:
+    response_speed: "balanced"  # fast, balanced, thorough
+    verbosity_level: "normal"  # minimal, normal, detailed
+    humor_enabled: true
+    formality_level: "neutral"  # casual, neutral, formal
+    
+  # Предпочтения конфиденциальности
+  privacy:
+    data_collection: "minimal"  # minimal, balanced, comprehensive
+    history_retention: 30  # дней
+    auto_delete_sensitive_data: true
+    anonymize_data: true
+    
+  # Предпочтения уведомлений
+  notifications:
+    enabled: true
+    sound_notifications: true
+    push_notifications: true
+    email_summaries: false
+    summary_frequency: "daily"  # never, daily, weekly
+    
+  # Предпочтения обучения
+  learning:
+    adaptive_learning: true
+    learning_speed: "medium"  # slow, medium, fast
+    feedback_enabled: true
+    personalization_level: "high"  # low, medium, high
+    
+  # Предпочтения доступности
+  accessibility:
+    screen_reader_support: true
+    high_contrast_mode: false
+    voice_control: true
+    keyboard_shortcuts: true

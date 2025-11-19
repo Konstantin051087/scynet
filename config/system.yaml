@@ -1,0 +1,53 @@
+system:
+  name: "Synthetic Mind"
+  version: "1.0"
+  environment: "development"
+
+communication:
+  use_redis: false
+  redis_host: "localhost"
+  redis_port: 6379
+
+security:
+  enabled: true
+  security_level: "medium"
+
+performance:
+  monitoring: true
+  metrics_collection: true
+
+modules:
+  enabled:
+  
+    - coordinator
+    - communication_bus
+    - security_gateway
+    - performance_monitor
+    - module_manager
+    - intent_analyzer
+    - response_synthesizer
+    - text_understander
+    - speech_recognizer
+    - speech_generator
+    - visual_processor
+    - memory_short_term
+    - memory_long_term
+    - logic_analyzer
+    - creativity
+    - emotional_engine
+    - task_planner
+    - goals    
+    - search_agent
+    - api_caller
+    - action_executor
+
+  disabled: []
+  
+web_interface:
+  enabled: false
+  host: "0.0.0.0"
+  port: 8000
+
+database:
+  postgres_url: "postgresql://user:pass@localhost:5432/scynet"
+  redis_url: "redis://localhost:6379"

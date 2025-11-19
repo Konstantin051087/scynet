@@ -1,0 +1,60 @@
+# config/modules/memory_long_term.yaml
+memory_long_term:
+  enabled: true
+  priority: 2
+  
+  # Настройки базы данных
+  database:
+    type: "postgresql"
+    connection_string: "${DATABASE_URL}"
+    pool_size: 5
+    max_overflow: 10
+    
+  # Настройки графа знаний
+  knowledge_graph:
+    enabled: true
+    auto_sync: true
+    sync_interval: 300  # секунды
+    max_relationships_per_node: 100
+    
+  # Настройки эпизодической памяти
+  episodic_memory:
+    enabled: true
+    retention_period: 30  # дней
+    compression_enabled: true
+    enable_timeline: true
+    
+  # Настройки семантической памяти
+  semantic_memory:
+    enabled: true
+    auto_categorize: true
+    enable_fact_validation: true
+    confidence_threshold: 0.8
+    
+  # Настройки профилей пользователей
+  user_profiles:
+    enabled: true
+    auto_create_profiles: true
+    profile_template: "modules/memory_long_term/user_profiles/template.profile"
+    privacy_mode: "standard"  # standard, strict, minimal
+    
+  # Настройки ассоциаций
+  associations:
+    enabled: true
+    max_associations: 10
+    association_strength_decay: 0.1
+    enable_semantic_similarity: true
+    
+  # Настройки поиска
+  retrieval:
+    max_results: 10
+    similarity_threshold: 0.7
+    enable_fuzzy_search: true
+    search_timeout: 5  # секунды
+    
+  # Настройки забывания
+  forgetting:
+    enabled: true
+    forget_interval: 7  # дней
+    importance_threshold: 0.3
+    enable_selective_forgetting: true

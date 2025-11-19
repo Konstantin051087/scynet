@@ -1,0 +1,51 @@
+# config/modules/emotional_engine.yaml
+emotional_engine:
+  enabled: true
+  priority: 2
+  
+  # Настройки детектора эмоций
+  emotion_detection:
+    enabled: true
+    detection_modes: ["text", "voice", "facial"]
+    confidence_threshold: 0.6
+    real_time_processing: true
+    
+  # Настройки симуляции эмоций
+  emotion_simulation:
+    enabled: true
+    emotional_range: 0.8  # 0.0 - 1.0
+    emotion_persistence: 0.5
+    emotional_memory: true
+    
+  # Настройки движка эмпатии
+  empathy_engine:
+    enabled: true
+    empathy_level: 0.7  # 0.0 - 1.0
+    perspective_taking: true
+    emotional_contagion_control: true
+    
+  # Настройки трекера настроения
+  mood_tracking:
+    enabled: true
+    mood_update_frequency: 5  # минут
+    mood_history_retention: 30  # дней
+    mood_pattern_analysis: true
+    
+  # Настройки эмоциональных правил
+  emotional_rules:
+    rules_file: "modules/emotional_engine/emotional_rules.yaml"
+    rule_priority_system: true
+    adaptive_rule_learning: true
+    
+  # Настройки эмоциональной базы знаний
+  emotion_knowledge_base:
+    enabled: true
+    emotion_taxonomy: "basic"  # basic, extended, complex
+    cultural_variations: true
+    emotion_expression_rules: true
+    
+  # Настройки производительности
+  performance:
+    emotion_cache_size: 100
+    processing_timeout: 10  # секунды
+    batch_processing: true

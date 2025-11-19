@@ -11,6 +11,8 @@ import json
 import os
 from pathlib import Path
 import logging
+import asyncio
+from typing import List
 
 class SpeechRecognitionModel:
     def __init__(self, model_size: str = "base", device: str = "auto"):
@@ -236,3 +238,12 @@ class SpeechRecognitionModel:
         except Exception as e:
             self.logger.error(f"Ошибка определения языка: {e}")
             return "unknown"
+
+    async def async_transcribe(self, 
+                             audio_data: np.ndarray, 
+                             language: Optional[str] = None,
+                             prompt: Optional[str] = None) -> Dict[str, Any]:
+        """Асинхронная версия транскрибации"""
+        return await asyncio.get_event_loop().run_in_executor(
+            None, self.transcribe, audio_data, language, prompt
+        )

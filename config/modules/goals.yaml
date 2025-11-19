@@ -1,0 +1,53 @@
+# config/modules/goals.yaml
+goals:
+  enabled: true
+  priority: 2
+  
+  # Настройки менеджера целей
+  goal_management:
+    enabled: true
+    max_active_goals: 10
+    goal_review_interval: 24  # часов
+    enable_goal_conflict_detection: true
+    
+  # Настройки приоритетов
+  prioritization:
+    enabled: true
+    priority_factors: ["urgency", "importance", "resources"]
+    auto_priority_adjustment: true
+    priority_recalculation_interval: 1  # час
+    
+  # Настройки декомпозиции целей
+  goal_decomposition:
+    enabled: true
+    max_decomposition_depth: 5
+    enable_subgoal_optimization: true
+    dependency_tracking: true
+    
+  # Настройки отслеживания прогресса
+  progress_tracking:
+    enabled: true
+    progress_update_frequency: 1  # час
+    milestone_tracking: true
+    enable_progress_analytics: true
+    
+  # Настройки оценки обратной связи
+  feedback_evaluation:
+    enabled: true
+    learning_rate: 0.1
+    goal_adjustment_threshold: 0.3
+    success_metric_tracking: true
+    
+  # Настройки библиотеки целей
+  goal_library:
+    enabled: true
+    auto_goal_suggestions: true
+    personalized_goal_recommendations: true
+    goal_template_matching: true
+    
+  # Настройки ресурсов
+  resource_management:
+    enabled: true
+    resource_allocation_strategy: "balanced"  # balanced, aggressive, conservative
+    resource_monitoring: true
+    budget_tracking: true

@@ -1,0 +1,47 @@
+# config/modules/text_understander.yaml
+text_understander:
+  enabled: true
+  priority: 1
+  
+  # Настройки NLP модели
+  nlp_model:
+    name: "bert-base-multilingual-uncased"
+    version: "1.0"
+    max_length: 512
+    device: "auto"
+    
+  # Настройки классификации намерений
+  intent_classification:
+    confidence_threshold: 0.6
+    enable_fallback_intent: true
+    fallback_intent: "unknown"
+    
+  # Настройки извлечения сущностей
+  entity_extraction:
+    enabled: true
+    extract_entities: ["PERSON", "LOCATION", "ORGANIZATION", "DATE", "TIME"]
+    enable_custom_entities: true
+    
+  # Настройки анализа тональности
+  sentiment_analysis:
+    enabled: true
+    granularity: "sentence"  # sentence, aspect
+    enable_emotion_detection: true
+    
+  # Настройки контекста
+  context:
+    enable_context_tracking: true
+    context_window: 5  # количество предыдущих реплик
+    enable_coreference_resolution: true
+    
+  # Настройки языка
+  language:
+    default_language: "ru"
+    supported_languages: ["ru", "en"]
+    enable_language_detection: true
+    
+  # Настройки базы знаний
+  knowledge_base:
+    slang_database: "modules/text_understander/slang_database.db"
+    grammar_rules: "modules/text_understander/grammar_rules.yaml"
+    enable_grammar_correction: true

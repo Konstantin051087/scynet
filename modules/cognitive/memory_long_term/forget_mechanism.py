@@ -4,7 +4,7 @@
 
 import sqlite3
 import logging
-from typing import List, Dict
+from typing import List, Dict, Any
 from datetime import datetime, timedelta
 import os
 

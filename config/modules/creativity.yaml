@@ -1,0 +1,59 @@
+# config/modules/creativity.yaml
+creativity:
+  enabled: true
+  priority: 3
+  
+  # Настройки генерации метафор
+  metaphor_generation:
+    enabled: true
+    creativity_level: 0.7  # 0.0 - 1.0
+    max_metaphor_length: 3
+    enable_cultural_context: true
+    
+  # Настройки генерации шуток
+  joke_generation:
+    enabled: true
+    humor_style: "universal"  # universal, sarcastic, witty, absurd
+    appropriateness_filter: true
+    max_joke_complexity: 2
+    
+  # Настройки композиции поэзии
+  poetry_composition:
+    enabled: true
+    supported_forms: ["free_verse", "haiku", "sonnet"]
+    rhyme_scheme: "auto"
+    meter_detection: true
+    
+  # Настройки рассказчика
+  story_telling:
+    enabled: true
+    max_story_length: 1000
+    enable_plot_twists: true
+    character_development: true
+    
+  # Настройки генерации идей
+  idea_generation:
+    enabled: true
+    brainstorming_mode: true
+    max_ideas_per_session: 10
+    idea_evaluation: true
+    
+  # Настройки анализа обратной связи
+  feedback_analysis:
+    enabled: true
+    learning_from_feedback: true
+    adaptation_rate: 0.1
+    quality_metrics_tracking: true
+    
+  # Настройки творческих паттернов
+  creative_patterns:
+    patterns_path: "modules/creativity/creative_patterns/"
+    auto_pattern_discovery: true
+    pattern_evolution: true
+    
+  # Настройки модели
+  model:
+    type: "gpt-based"
+    temperature: 0.8
+    top_p: 0.9
+    max_tokens: 500

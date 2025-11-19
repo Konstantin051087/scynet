@@ -1,0 +1,53 @@
+# config/modules/logic_analyzer.yaml
+logic_analyzer:
+  enabled: true
+  priority: 2
+  
+  # Настройки движка логического вывода
+  reasoning_engine:
+    enabled: true
+    max_reasoning_steps: 10
+    enable_backward_chaining: true
+    enable_forward_chaining: true
+    
+  # Настройки решения головоломок
+  puzzle_solving:
+    enabled: true
+    timeout: 30  # секунды
+    enable_heuristics: true
+    max_complexity: "medium"  # low, medium, high
+    
+  # Настройки дедуктивного мышления
+  deduction:
+    enabled: true
+    confidence_threshold: 0.8
+    enable_probabilistic_reasoning: true
+    uncertainty_handling: "strict"  # strict, lenient, adaptive
+    
+  # Настройки умозаключений
+  inference:
+    enabled: true
+    max_inference_depth: 5
+    enable_abductive_reasoning: true
+    consistency_checking: true
+    
+  # Настройки математического анализа
+  mathematical_reasoning:
+    enabled: true
+    supported_operations: ["arithmetic", "algebra", "calculus"]
+    precision: 0.001
+    symbolic_computation: true
+    
+  # Настройки производительности
+  performance:
+    cache_enabled: true
+    cache_size: 1000
+    enable_parallel_reasoning: true
+    max_parallel_tasks: 3
+    
+  # Настройки обучения
+  training:
+    enabled: true
+    training_data_path: "modules/logic_analyzer/training_puzzles/"
+    auto_improvement: true
+    learning_rate: 0.01

@@ -2,6 +2,7 @@
 Анализатор обратной связи
 """
 
+import random
 import re
 import json
 import logging

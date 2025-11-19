@@ -1,0 +1,37 @@
+// goal_library/work_goals.goal
+{
+  "version": "1.0", 
+  "description": "Библиотека типовых рабочих целей",
+  "templates": {
+    "learn_new_technology": {
+      "title": "Освоение новой технологии",
+      "description": "Изучение и практическое применение новой технологии в работе",
+      "priority": "HIGH",
+      "tags": ["work", "learning", "technology"],
+      "metrics": {
+        "expected_impact": 0.8,
+        "required_resources": {"time_weekly": 300}
+      }
+    },
+    "improve_productivity": {
+      "title": "Повышение личной продуктивности",
+      "description": "Внедрение методов и инструментов для повышения эффективности работы",
+      "priority": "HIGH",
+      "tags": ["work", "productivity", "optimization"],
+      "metrics": {
+        "expected_impact": 0.9,
+        "required_resources": {"time_weekly": 120}
+      }
+    },
+    "complete_project": {
+      "title": "Завершение рабочего проекта",
+      "description": "Полное завершение и сдача рабочего проекта в установленные сроки",
+      "priority": "CRITICAL", 
+      "tags": ["work", "project", "delivery"],
+      "metrics": {
+        "expected_impact": 1.0,
+        "required_resources": {"time_daily": 480}
+      }
+    }
+  }
+}

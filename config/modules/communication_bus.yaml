@@ -1,0 +1,27 @@
+communication_bus:
+  enabled: true
+  broker_type: "redis"  # "in-memory" для разработки, "redis" для продакшена
+  message_ttl: 3600
+  max_queue_size: 1000
+  security:
+    require_authentication: true
+    encryption_enabled: false
+  performance:
+    max_concurrent_messages: 100
+    cleanup_interval: 300
+  logging:
+    level: "INFO"
+    log_messages: false  # Для избежания дублирования логов
+    
+  # Настройки для Redis (если используется)
+  redis:
+    host: "localhost"
+    port: 6379
+    db: 1
+    password: ""
+    ssl: false
+    
+  # Настройки для in-memory режима
+  in_memory:
+    max_messages_per_topic: 100
+    garbage_collection_interval: 60
